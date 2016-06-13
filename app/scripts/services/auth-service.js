@@ -8,14 +8,16 @@
  * Service in the ngSimpleGroupsApp.
  */
 angular.module('ngSimpleGroupsApp')
-  .service('authService', function ($localStorage, jwtHelper) {
+  .service('authService', function ($localStorage, jwtHelper, $location, $route) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var lock = new Auth0Lock('9jO3mCvhh8zpgOruKzFIuCefLcKVNCrN', 'ismikin.eu.auth0.com');
 
     return {
       login: login,
       logout: logout,
-      loggedIn: loggedIn
+      loggedIn: loggedIn,
+      getUser: getUser,
+      redirectHome: redirectHome
     };
 
     function login() {
@@ -27,6 +29,8 @@ angular.module('ngSimpleGroupsApp')
           $localStorage.profile = JSON.stringify(profile);
           // We also get the user's JWT
           $localStorage.id_token = id_token;
+          // we need in rootScope for the auth in the
+          redirectHome();          
         });
     }
 
@@ -34,13 +38,24 @@ angular.module('ngSimpleGroupsApp')
       // To log out, we just need to remove
       // the user's profile and token
       resetLocalStorage();
+      redirectHome();
     }
 
     function loggedIn() {
        return $localStorage.id_token ? !jwtHelper.isTokenExpired($localStorage.id_token) : false;
      }
 
+     function getUser(){
+       return $localStorage.profile;
+     }
+
      function resetLocalStorage(){
        $localStorage.$reset();
      }
+
+     function redirectHome(){
+       $location.path('/');
+       $route.reload();
+     }
+
   });

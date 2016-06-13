@@ -33,10 +33,15 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
-        controllerAs: 'login'
+      .when('/groups', {
+        templateUrl: 'views/groups.html',
+        controller: 'GroupsCtrl',
+        controllerAs: 'groups',
+        resolve: {
+          user: function(authService){
+            return authService.loggedIn() ? authService.getUser() : authService.redirectHome();
+          }
+        }
       })
       .otherwise({
         redirectTo: '/'
