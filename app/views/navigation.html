@@ -18,8 +18,9 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#/">Home</a></li>
           <li><a ng-href="#/groups" ng-show="navigation.loggedIn()">Groups <i class="glyphicon glyphicon-list"></i></a></li>
-          <li><a ng-href="#/" ng-show="navigation.loggedIn()"> Log Out &nbsp;<i class="glyphicon glyphicon-log-out"></i></a></li>
-          <li><a ng-href="#/" ng-hide="navigation.loggedIn()"> Log In &nbsp;<i class="glyphicon glyphicon-log-in"></i></a></li>
+          <li><a ng-href="#/about" ng-show="navigation.loggedIn()">About <i class="glyphicon glyphicon-info-sign"></i></a></li>
+          <li><a ng-href="#/" ng-hide="navigation.loggedIn()" ng-click="navigation.openLogin()"> Log In &nbsp;<i class="glyphicon glyphicon-log-in"></i></a></li>
+          <li><a ng-href="#/" ng-show="navigation.loggedIn()" ng-click="navigation.logout()"> Log Out &nbsp;<i class="glyphicon glyphicon-log-out"></i></a></li>
         </ul>
       </div>
     </div>

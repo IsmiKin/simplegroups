@@ -22,5 +22,8 @@ angular.module('ngSimpleGroupsApp')
       var navigation = this;
 
       navigation.loggedIn = authService.loggedIn;
+      navigation.openLogin = authService.login;
+      navigation.logout = authService.logout;
+
     }
   });

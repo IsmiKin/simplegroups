@@ -27,7 +27,6 @@ angular.module('ngSimpleGroupsApp')
           $localStorage.profile = JSON.stringify(profile);
           // We also get the user's JWT
           $localStorage.id_token = id_token;
-          console.log(loggedIn());
         });
     }
 
@@ -38,7 +37,7 @@ angular.module('ngSimpleGroupsApp')
     }
 
     function loggedIn() {
-       return !jwtHelper.isTokenExpired($localStorage.id_token);
+       return $localStorage.id_token ? !jwtHelper.isTokenExpired($localStorage.id_token) : false;
      }
 
      function resetLocalStorage(){
