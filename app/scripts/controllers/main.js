@@ -8,10 +8,12 @@
  * Controller of the ngSimpleGroupsApp
  */
 angular.module('ngSimpleGroupsApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function (authService) {
+
+    var vm = this;
+    vm.loggedIn = authService.loggedIn;
+    vm.variable = "pikachu";
+    console.log("pika");
+    console.log(authService.loggedIn());
+
   });
