@@ -8,9 +8,9 @@
  * Service in the ngSimpleGroupsApp.
  */
 angular.module('ngSimpleGroupsApp')
-  .service('authService', function ($localStorage, jwtHelper, $location, $route) {
+  .service('authService', function ($localStorage, jwtHelper, $location, $route, ENV) {
     // AngularJS will instantiate a singleton by calling "new" on this function
-    var lock = new Auth0Lock('9jO3mCvhh8zpgOruKzFIuCefLcKVNCrN', 'ismikin.eu.auth0.com');
+    var lock = new Auth0Lock(ENV.auth0ClientID, ENV.auth0Domain);
 
     return {
       login: login,
@@ -21,6 +21,7 @@ angular.module('ngSimpleGroupsApp')
     };
 
     function login() {
+      
       lock.show( function(error, profile, id_token) {
           if (error) {
             console.log(error);
@@ -30,7 +31,7 @@ angular.module('ngSimpleGroupsApp')
           // We also get the user's JWT
           $localStorage.id_token = id_token;
           // we need in rootScope for the auth in the
-          redirectHome();          
+          redirectHome();
         });
     }
 

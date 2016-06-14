@@ -19,7 +19,8 @@ angular
     'auth0',
     'angular-storage',
     'angular-jwt',
-    'ngStorage'
+    'ngStorage',
+    'config'
   ])
   .config(function ($routeProvider) {
     $routeProvider

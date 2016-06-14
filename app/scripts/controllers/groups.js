@@ -8,10 +8,19 @@
  * Controller of the ngSimpleGroupsApp
  */
 angular.module('ngSimpleGroupsApp')
-  .controller('GroupsCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('GroupsCtrl', function (groupsService) {
+
+    var vm = this;
+
+    initialize();
+
+    function initialize(){
+      groupsService
+        .getGroups('a')
+        .then(function(groups){
+          console.log(groups);
+          vm.groups = groups;
+        });
+    }
+
   });
