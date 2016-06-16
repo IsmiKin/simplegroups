@@ -39,6 +39,7 @@ angular.module('ngSimpleGroupsApp')
 
     function clearSearch(){
       vm.search = '';
+      vm.groups = [];
     }
 
     function searching(){

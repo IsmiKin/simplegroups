@@ -22,13 +22,13 @@ angular.module('ngSimpleGroupsApp')
       bindToController: true,
     };
 
-    function GroupLiController(ENV, groupsService) {
+    function GroupLiController(ENV, groupsService, $route, $routeParams) {
       var groupli = this;
 
       groupli.endpoint = ENV.kjuesEndpoint;
       groupli.isMember = isMember;
       groupli.joinGroup = joinGroup;
-      groupli.leaveGroup = leaveGroup;
+      groupli.leaveGroup = leaveGroup;      
 
       function isMember(){
         return _.includes(groupli.usergroups, groupli.group.id);
@@ -36,10 +36,12 @@ angular.module('ngSimpleGroupsApp')
 
       function joinGroup(){
         groupsService.addUserGroup(groupli.group.id);
+        $route.reload();
       }
 
       function leaveGroup(){
         groupsService.removeUserGroup(groupli.group.id);
+        $route.reload();
       }
 
     }
