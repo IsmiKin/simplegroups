@@ -12,15 +12,29 @@ angular.module('ngSimpleGroupsApp')
 
     var vm = this;
 
-    initialize();
+    vm.searchLoading = false;
 
-    function initialize(){
+    vm.updateSearch = updateSearch;
+    vm.clearSearch = clearSearch;
+    vm.searching = searching;
+
+    function updateSearch(){
+      vm.searchLoading = true;
       groupsService
-        .getGroups('a')
+        .getGroups(vm.search)
         .then(function(groups){
           console.log(groups);
           vm.groups = groups;
+          vm.searchLoading = false;
         });
+    }
+
+    function clearSearch(){
+      vm.search = '';
+    }
+
+    function searching(){
+      return vm.search.length > 0;
     }
 
   });

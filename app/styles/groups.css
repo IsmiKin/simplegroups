@@ -1,0 +1,17 @@
+.groupli {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-right: 3%;
+}
+
+.image-group {
+  max-height: 150px;
+}
+
+.header-group {
+  margin-bottom: 20px;
+}
+
+.button-join {
+  float: right;
+}

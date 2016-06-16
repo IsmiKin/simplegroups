@@ -1,0 +1,17 @@
+<div class="panel panel-default groupli">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <img ng-src="{{groupli.endpoint}}{{groupli.group.image_url}}" class="image-group" alt="{{groupli.group.name}}" class="img-rounded">
+      </div>
+      <div class="col-sm-10">
+        <div class="header-group">
+          <button class="button-join btn btn-primary" type="button" name="button"> Join</button>
+          <p class="text-left"><h3> {{::groupli.group.name}}</h3></p>
+          <strong>({{::groupli.group.member_count}} members)</strong>
+        </div>
+        {{::groupli.group.description}}
+      </div>
+    </div>
+  </div>
+</div>

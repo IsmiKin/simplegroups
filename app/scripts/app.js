@@ -41,7 +41,7 @@ angular
         resolve: {
           user: function(authService){
             return authService.loggedIn() ? authService.getUser() : authService.redirectHome();
-          }
+          }          
         }
       })
       .otherwise({

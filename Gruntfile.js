@@ -88,9 +88,10 @@ module.exports = function (grunt) {
             name: 'development',
             kjuesUsername: process.env.kjuesUsername,
             kjuesPassword: process.env.kjuesPassword,
-            kjuesEndpoint:  process.env.kjuesEndpoint,
+            kjuesEndpoint: process.env.kjuesEndpoint,
             auth0ClientID: process.env.auth0ClientID,
-            auth0Domain:   process.env.auth0Domain
+            auth0Domain:   process.env.auth0Domain,
+            apiRoot:       process.env.apiRoot
           }
         }
       },
@@ -105,7 +106,8 @@ module.exports = function (grunt) {
             kjuesPassword: process.env.kjuesPassword,
             kjuesEndpoint:  process.env.kjuesEndpoint,
             auth0ClientID: process.env.auth0ClientID,
-            auth0Domain:   process.env.auth0Domain
+            auth0Domain:   process.env.auth0Domain,
+            apiRoot:       process.env.apiRoot
           }
         }
       }

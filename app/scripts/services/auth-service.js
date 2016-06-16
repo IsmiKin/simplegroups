@@ -19,9 +19,9 @@ angular.module('ngSimpleGroupsApp')
       getUser: getUser,
       redirectHome: redirectHome
     };
-
+    console.log(ENV);
     function login() {
-      
+
       lock.show( function(error, profile, id_token) {
           if (error) {
             console.log(error);
