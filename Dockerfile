@@ -20,4 +20,3 @@ WORKDIR /opt/ismikin/simplegroups
 RUN bower install --allow-root
 RUN npm install
 RUN npm install -g grunt-cli
-RUN grunt serve
