@@ -12,6 +12,14 @@ version 0.15.1.
 
 ## Build & development
 
+## Install & Setup
+
+### Dependencies
+```
+npm install
+bower install
+```
+
 ### Env variables
 ```
 // auth0 
