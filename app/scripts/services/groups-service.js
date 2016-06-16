@@ -8,11 +8,12 @@
  * Service in the ngSimpleGroupsApp.
  */
 angular.module('ngSimpleGroupsApp')
-  .service('groupsService', function (ENV, $http, $firebaseObject, authService) {
+  .service('groupsService', function (ENV, $http, $firebaseObject, authService, _) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var firebaseRef = new Firebase("https://simple-groups.firebaseio.com/groups");
     var obj = $firebaseObject(firebaseRef);
+    console.log(_.chunk(['a', 'b', 'c', 'd'], 2));
 
     return {
       getGroups: getGroups,
