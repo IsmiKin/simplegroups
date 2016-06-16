@@ -8,6 +8,6 @@
  * Controller of the ngSimpleGroupsApp
  */
 angular.module('ngSimpleGroupsApp')
-  .controller('MainCtrl', function () {        
+  .controller('MainCtrl', function () {
 
   });

@@ -20,7 +20,8 @@ angular
     'angular-storage',
     'angular-jwt',
     'ngStorage',
-    'config'
+    'config',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -41,7 +42,7 @@ angular
         resolve: {
           user: function(authService){
             return authService.loggedIn() ? authService.getUser() : authService.redirectHome();
-          }          
+          }
         }
       })
       .otherwise({

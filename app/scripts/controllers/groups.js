@@ -20,13 +20,22 @@ angular.module('ngSimpleGroupsApp')
 
     function updateSearch(){
       vm.searchLoading = true;
-      groupsService
+      vm.groups = groupsService
         .getGroups(vm.search)
         .then(function(groups){
-          console.log(groups);
-          vm.groups = groups;
           vm.searchLoading = false;
+          return groups;
         });
+
+      // vm.userGroups = groupsService
+      //   .userGroups()
+      //   .then(function(groups){
+      //     console.log(groups);
+      //     return groups;
+      //   });
+
+      groupsService
+        .updateUserGroup();
     }
 
     function clearSearch(){

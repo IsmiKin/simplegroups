@@ -25,11 +25,6 @@ angular.module('ngSimpleGroupsApp')
       var groupli = this;
 
       groupli.endpoint = ENV.kjuesEndpoint;
-      console.log(groupli.endpoint);
-
-      // navigation.loggedIn = authService.loggedIn;
-      // navigation.openLogin = authService.login;
-      // navigation.logout = authService.logout;
-
+      
     }
   });

@@ -19,7 +19,7 @@ angular.module('ngSimpleGroupsApp')
       getUser: getUser,
       redirectHome: redirectHome
     };
-    console.log(ENV);
+
     function login() {
 
       lock.show( function(error, profile, id_token) {
@@ -27,7 +27,7 @@ angular.module('ngSimpleGroupsApp')
             console.log(error);
           }
           // We get a profile object for the user from Auth0
-          $localStorage.profile = JSON.stringify(profile);
+          $localStorage.profile = profile;
           // We also get the user's JWT
           $localStorage.id_token = id_token;
           // we need in rootScope for the auth in the
