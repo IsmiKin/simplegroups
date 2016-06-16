@@ -11,7 +11,7 @@ angular.module('ngSimpleGroupsApp')
   .service('groupsService', function (ENV, $http, $firebaseObject, authService, _) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    var firebaseRef = new Firebase("https://simple-groups.firebaseio.com/groups");
+    var firebaseRef = new Firebase("https://"+ENV.firebaseProject+"/groups");
     var obj = $firebaseObject(firebaseRef);
 
     return {
@@ -25,7 +25,7 @@ angular.module('ngSimpleGroupsApp')
     function getGroups(search){
       return $http.get(ENV.apiRoot + '/groups?prefix=' + search)
         .then(function(response){
-          return response.data.groups;
+          return angular.extend(response.data.groups, { endpoint: response.data.endpoint });
         });
     }
 

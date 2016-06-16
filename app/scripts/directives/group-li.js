@@ -11,7 +11,8 @@ angular.module('ngSimpleGroupsApp')
     return {
       scope: {
         group: '=',
-        usergroups: '='
+        usergroups: '=',
+        endpoint: '='
       },
       templateUrl: 'views/groupli.html',
       restrict: 'E',
@@ -25,10 +26,9 @@ angular.module('ngSimpleGroupsApp')
     function GroupLiController(ENV, groupsService, $route, $routeParams) {
       var groupli = this;
 
-      groupli.endpoint = ENV.kjuesEndpoint;
       groupli.isMember = isMember;
       groupli.joinGroup = joinGroup;
-      groupli.leaveGroup = leaveGroup;      
+      groupli.leaveGroup = leaveGroup;
 
       function isMember(){
         return _.includes(groupli.usergroups, groupli.group.id);

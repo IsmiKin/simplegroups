@@ -86,12 +86,10 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'development',
-            kjuesUsername: process.env.kjuesUsername,
-            kjuesPassword: process.env.kjuesPassword,
-            kjuesEndpoint: process.env.kjuesEndpoint,
-            auth0ClientID: process.env.auth0ClientID,
-            auth0Domain:   process.env.auth0Domain,
-            apiRoot:       process.env.apiRoot
+            auth0ClientID:    process.env.auth0ClientID,
+            auth0Domain:      process.env.auth0Domain,
+            apiRoot:          process.env.apiRoot,
+            firebaseProject:  process.env.firebaseProject
           }
         }
       },
@@ -102,12 +100,10 @@ module.exports = function (grunt) {
         constants: {
           ENV: {
             name: 'production',
-            kjuesUsername: process.env.kjuesUsername,
-            kjuesPassword: process.env.kjuesPassword,
-            kjuesEndpoint:  process.env.kjuesEndpoint,
             auth0ClientID: process.env.auth0ClientID,
             auth0Domain:   process.env.auth0Domain,
-            apiRoot:       process.env.apiRoot
+            apiRoot:       process.env.apiRoot,
+            firebaseProject:  process.env.firebaseProject
           }
         }
       }

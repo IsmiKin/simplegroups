@@ -24,6 +24,7 @@ angular.module('ngSimpleGroupsApp')
         .getGroups(vm.search)
         .then(function(groups){
           vm.groups = groups;
+          vm.endpoint = groups.endpoint;          
           vm.searchLoading = false;
         });
 
