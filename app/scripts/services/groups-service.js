@@ -13,13 +13,13 @@ angular.module('ngSimpleGroupsApp')
 
     var firebaseRef = new Firebase("https://simple-groups.firebaseio.com/groups");
     var obj = $firebaseObject(firebaseRef);
-    console.log(_.chunk(['a', 'b', 'c', 'd'], 2));
 
     return {
       getGroups: getGroups,
       getGroup: getGroup,
       userGroups: userGroups,
-      updateUserGroup: updateUserGroup
+      removeUserGroup: removeUserGroup,
+      addUserGroup: addUserGroup
     };
 
     function getGroups(search){
@@ -42,13 +42,30 @@ angular.module('ngSimpleGroupsApp')
       });
     }
 
-    function updateUserGroup(){
-      obj[authService.getUser().global_client_id] = [43,45];
-      obj.$save().then(function(ref) {
-        ref.key() === obj.$id; // true
-      }, function(error) {
-        console.log("Error:", error);
-      });
+    function removeUserGroup(group){
+      userGroups()
+        .then(function(groups){
+          var userGroups = obj[authService.getUser().global_client_id] || [];
+          obj[authService.getUser().global_client_id] = _.without(userGroups, group);
+          obj.$save().then(function(ref) {
+            ref.key() === obj.$id; // true
+          }, function(error) {
+            console.log("Error:", error);
+          });
+        });
+    }
+
+    function addUserGroup(group){
+      userGroups()
+        .then(function(groups){
+          var userGroups = obj[authService.getUser().global_client_id] || [];
+          obj[authService.getUser().global_client_id] = _.concat(userGroups,group);
+          obj.$save().then(function(ref) {
+            ref.key() === obj.$id; // true
+          }, function(error) {
+            console.log("Error:", error);
+          });
+        });
     }
 
 

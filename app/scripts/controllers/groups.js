@@ -20,22 +20,21 @@ angular.module('ngSimpleGroupsApp')
 
     function updateSearch(){
       vm.searchLoading = true;
-      vm.groups = groupsService
+      groupsService
         .getGroups(vm.search)
         .then(function(groups){
+          vm.groups = groups;
           vm.searchLoading = false;
-          return groups;
         });
 
-      // vm.userGroups = groupsService
-      //   .userGroups()
-      //   .then(function(groups){
-      //     console.log(groups);
-      //     return groups;
-      //   });
+      groupsService
+        .userGroups()
+        .then(function(groups){
+          vm.userGroups = groups;
+        });
 
       groupsService
-        .updateUserGroup();
+        .removeUserGroup(2);
     }
 
     function clearSearch(){
@@ -45,5 +44,6 @@ angular.module('ngSimpleGroupsApp')
     function searching(){
       return vm.search.length > 0;
     }
+
 
   });

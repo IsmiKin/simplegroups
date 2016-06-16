@@ -6,7 +6,8 @@
       </div>
       <div class="col-sm-10">
         <div class="header-group">
-          <button class="button-join btn btn-primary" type="button" name="button"> Join</button>
+          <button class="button-join btn btn-primary" ng-hide="groupli.isMember()" ng-click="groupli.joinGroup()" type="button" name="button"> Join</button>
+          <button class="button-join btn btn-danger" ng-show="groupli.isMember()" ng-click="groupli.leaveGroup()" type="button" name="button"> Leave</button>
           <p class="text-left"><h3> {{::groupli.group.name}}</h3></p>
           <strong>({{::groupli.group.member_count}} members)</strong>
         </div>
